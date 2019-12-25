@@ -1,0 +1,32 @@
+version: "3"
+
+services: 
+    mongodb:
+        image: 'mongo:4.2'
+        container_name: 'map-crawler-mongodb'
+        environment: 
+            - MONGO_INITDB_DATABASE=mapcrawler
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=123456789
+        volumes: 
+            - ./mongo_entrypoint:/docker-entrypoint-initdb.d
+            - mongodata:/data/db
+            - mongoconfig:/data/configdb
+        ports: 
+            - '27017-27019:27017-27019'
+    redis:
+        image: 'bitnami/redis:5.0.7'
+        container_name: 'map-crawler-redis'
+        environment:
+            - REDIS_PASSWORD=123456789
+        volumes:
+            - redisdata:/bitnami/redis/data
+        ports: 
+            - '6379:6379'
+volumes:
+    mongodata:
+        driver: local
+    mongoconfig:
+        driver: local
+    redisdata:
+        driver: local

@@ -1,0 +1,14 @@
+{
+    "mongodb": {
+        "url": "localhost",
+        "username": "admin",
+        "password": "123456789",
+        "port": "27017",
+        "database": "mapcrawler"
+    },
+    "redis": {
+        "url": "localhost",
+        "port": "6379",
+        "password": "123456789"
+    }
+}
